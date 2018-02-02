@@ -10,6 +10,12 @@ namespace VirtualPet
     {
         static void Main(string[] args)
         {
+            //create interactive console window
+            //prompt user to choose what to do with the Dragon
+            //call methods on Dragon object to do what the user wants
+
+          //  int userChoice;
+            //Dragon userDragon = new Dragon
         }
     }
 }
