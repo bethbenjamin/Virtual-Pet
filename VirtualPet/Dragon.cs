@@ -12,104 +12,138 @@ namespace VirtualPet
         //STATES
         //fields (at least three)
         //fields (camelCase)
-        private bool isHungry;
-        private bool isThirsty;
-        private bool isTired;
-        private int restlessDragon;
+
+        public int dracoAge = 100; //age of dragon
+        public int dracoHungry = 100; //dragon hunger out of 100
+        public int dracoHappy = 100; //dragon happiness out of 100
+        public int energyLevel = 100; //potential for energy gain or loss with hunger
+        public int dracoWater = 100; //dragon water level out of 100 / same idea as Hungry
+
 
         //Properties (at least three)
         //GET property accessor is used to return the property value.
         //SET property accessor is used to assign a new value. 
 
-        public bool IsHungry
+        public int DracoHungry
         {
-            get { return this.isHungry; }
-            set { this.isHungry = value; }
+            get { return this.dracoHungry; }
+            set { this.dracoHungry = value; }
         }
-        public bool IsThirsty
+        public int DracoAge
         {
-            get { return this.isThirsty; }
-            set { this.isThirsty = value; }
+            get { return this.dracoAge; }
+            set { this.dracoAge = value; }
         }
-        public bool IsTired
+        public int DracoHappy
         {
-            get { return this.isTired; }
-            set { this.isTired = value; }
+            get { return this.dracoHappy; }
+            set { this.dracoHappy = value; }
         }
-        public int RestlessDragon
+        
+        public int EnergyLevel
         {
-            get { return this.restlessDragon; }
-            set { this.restlessDragon = value; }
+            get { return this.energyLevel; }
+            set { this.energyLevel = value; }
         }
 
+        public int DracoWater
+        {
+            get { return this.dracoWater; }
+            set { this.dracoWater = value; }
+        }
         //BEHAVIORS
         //Constructors
         public Dragon()
         {
-
+            //default constructor - never put anything in this constructor
+            //takes no parameters (nothing in the parentheses)
         }
 
-        public Dragon(bool isHungry, bool isThirsty, bool isTired, int restlessDragon)
+
+        public Dragon(int dracoHungry, int dracoHappy , int dracoAge, int energyLevel, int dracoWater)
         {
-            this.isHungry = isHungry;
-            this.isThirsty = isThirsty;
-            this.isTired = isTired;
-            this.restlessDragon = RestlessDragon;
+            this.dracoHungry = dracoHungry;
+            this.dracoHappy = dracoHappy; 
+            this.dracoAge = dracoAge; 
+            this.energyLevel = energyLevel;
+            this.dracoWater = dracoWater;
+           
         }
 
-        //methods (at least three)
-        public string Feed()
+
+        //methods(at least three)
+        public void Play() // if she plays she will get hungry, get thirsty and lose energy.
         {
-            if (isHungry)
+            dracoHappy += 0;
+            dracoHungry -= 4;
+            energyLevel -= 5;
+            dracoWater -= 4;
+            
+        }//this is the end of DracoPlay method
+
+        public void Feed() //this needs to  be in string 
+        {
+            if (dracoHungry > 20) //basically saying if dracoHungry is less than 1 do this:
             {
-                isHungry = false;
-                return "Your Hungarian Horntailed Dragon is not hungry yet";
+                Console.WriteLine("Did you just feed her a whale?  She's full. She can't eat anymore.");
+                
+            }
+            else if (dracoHungry > 50) //half way 
+            {
+                Console.WriteLine("Draco seems hungry.  One or two Fwoopers will do.");
+            }
+            else if (dracoHungry > 90) //almost at the end
+            {
+                Console.WriteLine("She is weak, she must be fed immediately. Quick, someone feed her an elephant!");
             }
             else
             {
-                return "Your Hungarian Horntailed Dragon is very hungry. You better feed her or else...";
+                Console.WriteLine("Did you not know that Hungarian Horntails are even more vicious when hungry? It's now or never. ");
             }
+            dracoHungry += 2; //if she eats she will get thirsty, increase energy and make her happy
+            dracoWater -= 1;
+            energyLevel += 1;
+            dracoHappy -= 2;
+        } //this is the end of the feed method
 
-        }
+        public void Water() //this needs to  be in string 
 
-        public string Watered()
         {
-            if (IsThirsty)
+            if (dracoWater > 20) //basically saying if dracoWater is less than 9 do this:
             {
-                isThirsty = false;
-                return "Your Hungarian Horntailed Dragon is thirsty";
+                Console.WriteLine("She's had her fill of water at the moment. Best to not give her anymore water.");
+            }
+            else if (dracoWater > 50) //half way 
+            {
+                Console.WriteLine("Draco seems thirsty. Fill the water dish and run!");
+            }
+            else if(dracoWater > 90)
+            {
+                Console.WriteLine("Draco is dying of dehydration. Give her water immediately!");
             }
             else
             {
-                return "Your Hungarian Horntailed Dragon is not thirsty, please do not over water your Dragon. ";
+                Console.WriteLine("Did you not know that Hungarian Horntails are even more vicious when thirsty? It's now or never. ");
             }
-        }
-        public string Sleep()
+            dracoWater += 2;//if draco drinks water she will 
+            dracoHungry -= 1;
+            energyLevel += 1;
+            dracoHappy -= 1;
+        } //this is the end of the Water method
+        public void DracoEat()
         {
-            if (isTired)
-            {
-                isTired = false;
-                return "Your Hungarian Horntailed Dragon is not tired";
-            }
-            else
-            {
-                return "Your Hungarian Horntailed Dragion is tired. Best to let her sleep.";
-            }
-        }
-        public string Play()
-        {
-            if (restlessDragon >= 10) //100 = 100% restless
-            {
-                return "Your Dragon needs to play, it's super restless.";
-            }
-            else if (restlessDragon > 50)
-            {
-                return "Draco could use some play time, if not now, soon!";
-            }
-            else
-            {
-                return "Draco needs to play NOW!";
-            }
-        }
-    }
-}
+            dracoHungry += 2; //this - an incrememnt of 2 (which is less than 5 set)
+            dracoWater -= 1; //adds water when eats
+            energyLevel += 1;
+            dracoHappy -= 1;
+        }//this is the end of the DracoEat method
+
+       
+        
+          
+            
+        
+    
+      
+    }//this ends the public class Dragon
+}//this ends the namespace
