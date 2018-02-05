@@ -22,7 +22,8 @@ namespace VirtualPet
             Console.WriteLine("She is just over 12 feet tall. The cave is damp.");
             Console.WriteLine("Draco is quite mild mannered for a Hungarian Horntail.");
             Console.WriteLine("You are lucky, Hungarian Hortails are rare.");
-            Console.WriteLine("As you may know, Dragons are very old and wise, treat her well and she'll outlive you.");
+            Console.WriteLine(@"As you may know, Dragons are very old and wise, 
+treat her well and she'll outlive you, treat her poorly and she'll likely leave you - or eat you.");//trying out a Rick trick!
             Console.WriteLine("");
             Console.WriteLine("Press -ENTER- to enter the DigiCave at your own risk!");
             Console.ReadLine(); //gathers value of return
@@ -41,6 +42,7 @@ namespace VirtualPet
 
                     case 1: //play with draco
                         Console.WriteLine("You played with Draco and no one got hurt!");
+                        Console.WriteLine("Playing takes energy from Draco");
                         petDragon.Play();
                         break;
                     case 2://feed draco
@@ -53,14 +55,14 @@ namespace VirtualPet
                         petDragon.Water(); // calls dracoWater state
                         break;
                     case 4: //exit cave
-                        Console.WriteLine("Press 4 to exit cave");
-                        Console.ReadLine();
+                        Console.WriteLine(@"You feel you just can't handle the responsibility of a Dragon.  Maybe you should start with a house plant instead.");
+                       // Console.ReadLine();
                         Console.WriteLine("Draco says 'bye Felicia'!, whips her tail around and goes back into her cave.");
                         quit = false;
                         break;
                     default:
                         Console.WriteLine("Sorry, thats not a choice. Draco is very particular about what she does. ");
-                        Console.WriteLine("Please enter 1, 2, 3, 4 or 5 ");
+                        Console.WriteLine("Please enter 1, 2, 3, or 4");
                         break;
                 }  // this ends the choice switch       
             } //while //end while loop
@@ -108,32 +110,32 @@ namespace VirtualPet
             //the tick (if i'm getting the idea right - will add a year to Draco for every action (1-4) 
             //tick Draco's age
             //create stmts that reflect user choices - if this return that stmt
-            petDragon.dracoAge += 100;
-            petDragon.dracoHungry -= 1;
+            petDragon.dracoAge += 100;//starts her out at 100 years old - will inc. her by 100 per year.
+            petDragon.dracoHungry += 0;
             petDragon.dracoHappy += 0;
-            petDragon.dracoWater -= 1;
+            petDragon.dracoWater -= 0;
             petDragon.energyLevel += 0;
            
-            if (petDragon.energyLevel < 1)
+            if (petDragon.energyLevel < 10)
             {
                 Console.Clear();
-                Console.WriteLine("Do not wake a sleeping dragon. If you do - it will be your death. ");
+                Console.WriteLine("Draco was fed up.  She left for the colony in Romania. ");
                 return 0;
             }
-            if (petDragon.dracoWater < 1) //water draco
+            if (petDragon.dracoWater < 10) //draco is dead of thirst
             {
                 Console.Clear();
                 Console.WriteLine("It is a myth that dragons do not need water. She has died of thirst.");
                 return 0;
             }
 
-            if (petDragon.dracoHungry < 1) //draco is dead
+            if (petDragon.dracoHungry < 10) //draco is dead of hunger
             {
                 Console.Clear();
                 Console.WriteLine("It is a horrible tragedy to kill a dragon. She is now in Dragon heaven.");
                 return 0;
             }//end if
-            else if (petDragon.dracoHappy < 1)//draco is not happy - she leaves
+            else if (petDragon.dracoHappy < 10)//draco is not happy - she leaves
             {
                 Console.Clear();
                 Console.WriteLine("Dragons are a rare beast that do not tolerate unhappiness. She has left the cave for a better one");

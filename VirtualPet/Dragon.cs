@@ -75,41 +75,41 @@ namespace VirtualPet
         public void Play() // if she plays she will get hungry, get thirsty and lose energy.
         {
             dracoHappy += 0;
-            dracoHungry -= 4;
-            energyLevel -= 5;
-            dracoWater -= 4;
+            dracoHungry -= 6;
+            energyLevel -= 10;
+            dracoWater -= 5;
             
         }//this is the end of DracoPlay method
 
-        public void Feed() //this needs to  be in string 
+        public void Feed() //if she feeds she will get thirsty and gain energy
         {
-            if (dracoHungry > 20) //basically saying if dracoHungry is less than 1 do this:
+            if (dracoHungry > 10) //basically saying if dracoHungry is less than 1 do this:
             {
                 Console.WriteLine("Did you just feed her a whale?  She's full. She can't eat anymore.");
                 
             }
-            else if (dracoHungry > 50) //half way 
+            else if (dracoHungry > 50) //less than or equal to 60
             {
-                Console.WriteLine("Draco seems hungry.  One or two Fwoopers will do.");
+                Console.WriteLine("Draco seems to be quite hungry.  One or two Fwoopers will do.");
             }
             else if (dracoHungry > 90) //almost at the end
             {
-                Console.WriteLine("She is weak, she must be fed immediately. Quick, someone feed her an elephant!");
+                Console.WriteLine("She is weak, she must be fed. Quick, someone get her an elephant!");
             }
             else
             {
-                Console.WriteLine("Did you not know that Hungarian Horntails are even more vicious when hungry? It's now or never. ");
+                Console.WriteLine("Hungarian Horntails are even more vicious when hungry? It's now or never. ");
             }
-            dracoHungry += 2; //if she eats she will get thirsty, increase energy and make her happy
-            dracoWater -= 1;
-            energyLevel += 1;
-            dracoHappy -= 2;
+            dracoHungry += 6; //if she eats she will get thirsty, increase energy and make her happy
+            dracoWater -= 5;
+            energyLevel += 5;
+            dracoHappy += 3;
         } //this is the end of the feed method
 
         public void Water() //this needs to  be in string 
 
         {
-            if (dracoWater > 20) //basically saying if dracoWater is less than 9 do this:
+            if (dracoWater < 20) //basically saying if dracoWater is less than 9 do this:
             {
                 Console.WriteLine("She's had her fill of water at the moment. Best to not give her anymore water.");
             }
@@ -119,16 +119,16 @@ namespace VirtualPet
             }
             else if(dracoWater > 90)
             {
-                Console.WriteLine("Draco is dying of dehydration. Give her water immediately!");
+                Console.WriteLine("Draco is dying of dehydration. Give her water!");
             }
             else
             {
-                Console.WriteLine("Did you not know that Hungarian Horntails are even more vicious when thirsty? It's now or never. ");
+                Console.WriteLine("Hungarian Horntails are even more vicious when thirsty? It's now or never. ");
             }
-            dracoWater += 2;//if draco drinks water she will 
+            dracoWater += 3;//if draco drinks water she will 
             dracoHungry -= 1;
-            energyLevel += 1;
-            dracoHappy -= 1;
+            energyLevel += 2;
+            dracoHappy -= 3;
         } //this is the end of the Water method
         public void DracoEat()
         {
